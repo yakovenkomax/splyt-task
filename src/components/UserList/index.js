@@ -3,10 +3,16 @@ import './styles.css';
 
 export default class UserList extends Component {
     render() {
-        return (
-            <div className="user-list">
+        const { userList } = this.props;
 
-            </div>
+        return (
+            <ul className="user-list">
+                { userList.map((userName, index) =>
+                    <li key={userName + index}>
+                        <span>{ userName }</span>
+                    </li>
+                ) }
+            </ul>
         );
     }
 }

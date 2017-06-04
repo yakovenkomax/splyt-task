@@ -10,19 +10,19 @@ export default class InputField extends Component {
     }
 
     _handleInput(event) {
-        const messageText = event.target.value;
+        const text = event.target.value;
 
         this.setState({
-            value: messageText
+            value: text
         });
     }
 
     _handleSend(event) {
         const { onSend } = this.props;
-        const messageText = event.target.value;
+        const text = event.target.value;
 
         if (event.charCode === 13) {
-            onSend(messageText);
+            onSend(text);
 
             this.setState({
                 value: ''

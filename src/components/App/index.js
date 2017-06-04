@@ -11,36 +11,65 @@ export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userName: 'Max',
-            messages: []
+            userList: [],
+            userName: null,
+            messageHistory: []
         };
 
         this.ws = new WebSocket(`ws://${window.location.hostname}:3001`);
 
-        this.ws.onmessage = (message) => {
-            const { messages } = this.state;
-            console.log(message.data);
-            messages.push(JSON.parse(message.data));
-            this.setState({ messages });
+        this.ws.onmessage = (messageEvent) => {
+            const { messageHistory } = this.state;
+            let messageObject = JSON.parse(messageEvent.data);
+            let { type, userName, isValid, errorText, userList } = messageObject;
+
+            switch (type) {
+                case 'nameValidation':
+                    if (isValid === true) {
+                        this.setState({ userName });
+                    } else {
+                        console.log(errorText);
+                    }
+                    break;
+                case 'userList':
+                    this.setState({ userList });
+                    break;
+                case 'message':
+                    this.setState({ messageHistory: [...messageHistory, messageObject] });
+                    break;
+                default:
+                    break;
+            }
         };
     }
 
-    _sendMessage(messageText) {
-        const { userName } = this.state;
-        const id = Math.random().toString(36).substr(2, 9);
-
+    _sendUserName(userName) {
         const message = {
-            id,
-            time: (new Date()).getTime(),
-            text: messageText,
-            author: userName
+            type: 'nameValidation',
+            userName
         };
 
+        console.log('send username for validation: ', message);
+        this.ws.send(JSON.stringify(message));
+    }
+
+    _sendMessage(text) {
+        const { userName } = this.state;
+        const id = Math.random().toString(36).substr(2, 9);
+        const message = {
+            type: 'message',
+            time: (new Date()).getTime(),
+            id,
+            text,
+            userName
+        };
+
+        console.log('send message: ', message);
         this.ws.send(JSON.stringify(message));
     }
 
     render() {
-        const { messages } = this.state;
+        const { messageHistory, userName, userList } = this.state;
 
         return (
             <div className="app">
@@ -48,13 +77,15 @@ export default class App extends Component {
                     splyt
                 </header>
                 <div className="app__chat">
-                    <ChatBoard messages={ messages }/>
+                    <ChatBoard messageHistory={ messageHistory }/>
                     <InputField onSend={this._sendMessage.bind(this)}/>
                 </div>
                 <div className="app__users">
-                    <UserList/>
+                    <UserList userList={ userList }/>
                 </div>
-                <LoginGate/>
+                { userName === null &&
+                    <LoginGate onSend={this._sendUserName.bind(this)}/>
+                }
             </div>
         );
     }

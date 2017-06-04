@@ -1,8 +1,11 @@
 # splyt-task
 
 Запуск приложения в dev режиме: `npm start`<br/>
-Запуск production сервера: `npm run server`
 
+Запуск production сервера: `npm run server`<br/>
+Открыть адрес [http://localhost:3000](http://localhost:3000)
+
+## Описание задания
 Требуется реализовать приложение чата с минимальной Back­end частью.
 
 ## Требования
