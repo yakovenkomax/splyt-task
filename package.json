@@ -14,7 +14,7 @@
     "utf-8-validate": "^3.0.2"
   },
   "scripts": {
-    "start": "concurrently \"react-scripts start\" \"node server.js devmode\"",
+    "start": "concurrently \"react-scripts start\" \"node server.js --dev\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
