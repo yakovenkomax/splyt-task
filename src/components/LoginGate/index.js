@@ -31,8 +31,11 @@ export default class LoginGate extends Component {
 
         return (
             <div className="login-gate">
-                <input onChange={this._handleInput.bind(this)}
+                <div className="login-gate__text">Welcome to Splyt chat</div>
+                <input className="login-gate__input"
+                    onChange={this._handleInput.bind(this)}
                     onKeyPress={this._handleSend.bind(this)}
+                    placeholder="Enter your name"
                     value={value}>
                 </input>
             </div>

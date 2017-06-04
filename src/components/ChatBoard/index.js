@@ -8,10 +8,11 @@ export default class ChatBoard extends Component {
         return (
             <ul className="chat-board">
                 { messageHistory.map(({ time, userName, text }, index) =>
-                    <li key={time + index}>
-                        <span>{ time }</span>
-                        <span>{ userName }</span>
-                        <span>{ text }</span>
+                    <li key={time + index}
+                        className="chat-board__message">
+                        <span className="chat-board__time">{ time }</span>
+                        <span className="chat-board__username">{ userName }</span>
+                        <span className="chat-board__text">{ text }</span>
                     </li>
                 ) }
             </ul>

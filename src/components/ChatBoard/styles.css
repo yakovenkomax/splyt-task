@@ -1,0 +1,22 @@
+.chat-board {
+    flex-grow: 1;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.chat-board__message {
+
+}
+
+.chat-board__time {
+    color: #fff;
+}
+
+.chat-board__username {
+    color: #fff;
+}
+
+.chat-board__text {
+    color: #fff;
+}

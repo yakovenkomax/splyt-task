@@ -1,24 +1,54 @@
-.App {
-    text-align: center;
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--gradient-purple);
 }
 
-.App-logo {
-    animation: App-logo-spin infinite 20s linear;
-    height: 80px;
+.app__header {
+    position: relative;
+    display: flex;
+    padding: 0.75rem;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: var(--shadow);
 }
 
-.App-header {
-    background-color: #222;
-    height: 150px;
-    padding: 20px;
-    color: white;
+.app__body {
+    display: flex;
+    flex-grow: 1;
 }
 
-.App-intro {
-    font-size: large;
+.app__logo-box {
+    display: flex;
+    align-items: flex-start;
 }
 
-@keyframes App-logo-spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+.app__logo {
+    display: block;
+    margin-top: 0.15rem;
+    width: 5rem;
+}
+
+.app__appendix {
+    display: inline-block;
+    margin-top: -0.3rem;
+    padding-left: 0.25rem;
+    color: var(--color-teal-light);
+    font-size: 0.8rem;
+}
+
+.app__username {
+    margin-left: auto;
+}
+
+.app__chat {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.app__users {
+    flex-basis: 20%;
+    min-width: 200px;
 }

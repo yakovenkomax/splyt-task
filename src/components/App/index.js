@@ -5,6 +5,7 @@ import UserList from '../UserList';
 import InputField from '../InputField';
 import LoginGate from '../LoginGate';
 
+import logo from '../../splyt.svg';
 import './styles.css';
 
 export default class App extends Component {
@@ -74,14 +75,20 @@ export default class App extends Component {
         return (
             <div className="app">
                 <header className="app__header">
-                    splyt
+                    <div className="app__logo-box">
+                        <img src={ logo } className="app__logo" alt="splyt" />
+                        <span className="app__appendix">chat</span>
+                    </div>
+                    <div className="app__username">{ userName !== null && userName }</div>
                 </header>
-                <div className="app__chat">
-                    <ChatBoard messageHistory={ messageHistory }/>
-                    <InputField onSend={this._sendMessage.bind(this)}/>
-                </div>
-                <div className="app__users">
-                    <UserList userList={ userList }/>
+                <div className="app__body">
+                    <div className="app__users">
+                        <UserList userList={ userList }/>
+                    </div>
+                    <div className="app__chat">
+                        <ChatBoard messageHistory={ messageHistory }/>
+                        <InputField onSend={this._sendMessage.bind(this)}/>
+                    </div>
                 </div>
                 { userName === null &&
                     <LoginGate onSend={this._sendUserName.bind(this)}/>

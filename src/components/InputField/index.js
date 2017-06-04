@@ -17,17 +17,22 @@ export default class InputField extends Component {
         });
     }
 
-    _handleSend(event) {
-        const { onSend } = this.props;
-        const text = event.target.value;
-
-        if (event.charCode === 13) {
-            onSend(text);
-
-            this.setState({
-                value: ''
-            });
+    _handleKeyPress(event) {
+        if (event.charCode === 13 && !event.shiftKey) {
+            this._handleSend();
+            event.preventDefault();
         }
+    }
+
+    _handleSend() {
+        const { onSend } = this.props;
+        const { value } = this.state;
+
+        onSend(value);
+
+        this.setState({
+            value: ''
+        });
     }
 
     render() {
@@ -35,10 +40,18 @@ export default class InputField extends Component {
 
         return (
             <div className="input-field">
-                <input onChange={this._handleInput.bind(this)}
-                    onKeyPress={this._handleSend.bind(this)}
+                <textarea className="input-field__textarea"
+                    onChange={this._handleInput.bind(this)}
+                    onKeyPress={this._handleKeyPress.bind(this)}
+                    placeholder='Type your message here...'
+                    tabIndex='1'
                     value={value}>
-                </input>
+                </textarea>
+                <div className="input-field__button"
+                    onClick={this._handleSend.bind(this)}
+                    tabIndex='2'>
+                    Send
+                </div>
             </div>
         );
     }
