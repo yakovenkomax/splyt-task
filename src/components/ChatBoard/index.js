@@ -14,7 +14,7 @@ export default class ChatBoard extends Component {
                 { messageHistory.map(({ time, userName, text }, index) =>
                     <li key={time + index}
                         className="chat-board__message">
-                        <span className="chat-board__time">{ `${(new Date(time)).getHours()}:${(new Date(time)).getMinutes()}` }</span>
+                        <span className="chat-board__time">{ (new Date(time)).toLocaleTimeString().slice(0,5) }</span>
                         <span className="chat-board__username">{ `${userName}:` }</span>
                         <span className="chat-board__text">{ text }</span>
                     </li>

@@ -32,14 +32,11 @@ export default class LoginGate extends Component {
         const { value } = this.state;
 
         onSend(value);
-
-        this.setState({
-            value: ''
-        });
     }
 
     render() {
         const { value } = this.state;
+        const { errorText } = this.props;
 
         return (
             <div className="login-gate">
@@ -51,11 +48,14 @@ export default class LoginGate extends Component {
                         label='Your name'
                         value={ value }/>
                 </div>
+                { errorText &&
+                    <div className="login-gate__error-text">{ errorText }</div>
+                }
                 <div className="login-gate__button">
                     <Button clickHandler={ this._handleSend.bind(this) }
                         isDisabled={ value === '' }
                         tabIndex='2'
-                        value='Sumbit'/>
+                        value='Enter'/>
                 </div>
             </div>
         );

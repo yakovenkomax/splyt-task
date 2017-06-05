@@ -17,6 +17,11 @@
     color: var(--color-gray-dark);
 }
 
+.login-gate__error-text {
+    margin-bottom: 1rem;
+    color: var(--color-gray);
+}
+
 .login-gate__input {
     margin-bottom: 1rem;
 }

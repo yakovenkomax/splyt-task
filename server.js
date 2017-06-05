@@ -11,7 +11,7 @@ const staticPath = path.join(__dirname, '/build');
 if (isDevMode === false) { // Disable for dev mode
     app.use(express.static(staticPath));
     app.listen(3000, () => {
-        console.log('web server started');
+        console.log('Web server started.');
     });
 }
 
@@ -20,14 +20,13 @@ const wss = new WebSocket.Server({ port: 3001 });
 let clients = {};
 
 function validateUserName(clients, userName) {
-    console.log('clients: ', clients);
     let isValid = true;
     let errorText = '';
 
     Object.keys(clients).forEach((id) => {
         if (clients[id].userName === userName) {
             isValid = false;
-            errorText = 'Имя уже занято';
+            errorText = 'This name is already taken.';
         }
     });
 
@@ -44,7 +43,7 @@ function send(client, messageObject, messageType) {
     client.ws.send(message, function(error) {
         // TODO: handle closed connections
     });
-    console.log(`send message: ${message}`);
+    console.log('Send: ', message);
 }
 
 wss.on('connection', (ws) => {
@@ -55,22 +54,22 @@ wss.on('connection', (ws) => {
         ws
     }
     clients[id] = currentClient;
-    console.log('client connected');
+    console.log('Client connected.');
 
     ws.on('message', (messageString) => {
         let messageObject = JSON.parse(messageString);
         let { type, userName } = messageObject;
 
+        console.log('Recieve: ', messageObject);
+
         switch (type) {
             case 'nameValidation':
                 let validationResult = validateUserName(clients, userName);
-                console.log('client submitted username:', userName);
 
                 send(currentClient, validationResult, 'nameValidation')
 
                 if (validationResult.isValid === true) {
                     currentClient.userName = userName;
-                    console.log('client name was valid');
                     const userList = Object.keys(clients).map((id) => {
                         if (clients[id].userName !== null) {
                             return clients[id].userName;
@@ -81,7 +80,6 @@ wss.on('connection', (ws) => {
                             send(clients[id], { userList }, 'userList')
                         }
                     })
-                    console.log('send client name to all clients');
                 }
 
                 break;
@@ -91,16 +89,17 @@ wss.on('connection', (ws) => {
                         send(clients[id], messageObject, 'message')
                     }
                 })
-                console.log('send message to all authorized clients:', messageObject);
 
+                break;
+            default:
                 break;
         }
     });
 
     ws.on('close', () => {
         delete clients[id];
-        console.log('client disconnected');
+        console.log('Client disconnected.');
     });
 });
 
-console.log('web socket server started');
+console.log('Web socket server started.');

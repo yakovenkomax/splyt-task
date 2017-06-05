@@ -14,7 +14,8 @@ export default class App extends Component {
         this.state = {
             userList: [],
             userName: null,
-            messageHistory: []
+            messageHistory: [],
+            errorText: null
         };
 
         this.ws = new WebSocket(`ws://${window.location.hostname}:3001`);
@@ -24,12 +25,14 @@ export default class App extends Component {
             let messageObject = JSON.parse(messageEvent.data);
             let { type, userName, isValid, errorText, userList } = messageObject;
 
+            console.log('Recieve: ', messageObject);
+
             switch (type) {
                 case 'nameValidation':
                     if (isValid === true) {
                         this.setState({ userName });
                     } else {
-                        console.log(errorText);
+                        this.setState({ errorText });
                     }
                     break;
                 case 'userList':
@@ -50,7 +53,7 @@ export default class App extends Component {
             userName
         };
 
-        console.log('send username for validation: ', message);
+        console.log('Send: ', message);
         this.ws.send(JSON.stringify(message));
     }
 
@@ -65,12 +68,12 @@ export default class App extends Component {
             userName
         };
 
-        console.log('send message: ', message);
+        console.log('Send: ', message);
         this.ws.send(JSON.stringify(message));
     }
 
     render() {
-        const { messageHistory, userName, userList } = this.state;
+        const { messageHistory, userName, userList, errorText } = this.state;
 
         return (
             <div className="app">
@@ -91,7 +94,7 @@ export default class App extends Component {
                     </div>
                 </div>
                 { userName === null &&
-                    <LoginGate onSend={this._sendUserName.bind(this)}/>
+                    <LoginGate onSend={this._sendUserName.bind(this)} errorText={ errorText }/>
                 }
             </div>
         );

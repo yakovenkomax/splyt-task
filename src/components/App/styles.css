@@ -40,6 +40,8 @@
 
 .app__username {
     margin-left: auto;
+    font-size: 1.25em;
+    color: var(--color-purple);
 }
 
 .app__chat {
