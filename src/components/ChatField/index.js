@@ -4,7 +4,7 @@ import Input from '../Input';
 
 import './styles.css';
 
-export default class LoginGate extends Component {
+export default class ChatField extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -42,20 +42,21 @@ export default class LoginGate extends Component {
         const { value } = this.state;
 
         return (
-            <div className="login-gate">
-                <div className="login-gate__text">Welcome to Splyt chat</div>
-                <div className="login-gate__input">
-                    <Input changeHandler={ this._handleInput.bind(this) }
-                        heyPressHandler={ this._handleKeyPress.bind(this) }
+            <div className="chat-field">
+                <div className="chat-field__input">
+                    <Input multiline={ true }
+                        changeHandler={this._handleInput.bind(this)}
+                        heyPressHandler={this._handleKeyPress.bind(this)}
                         tabIndex='1'
-                        label='Your name'
-                        value={ value }/>
+                        rows='1'
+                        placeholder='Type your message here...'
+                        value={value}/>
                 </div>
-                <div className="login-gate__button">
-                    <Button clickHandler={ this._handleSend.bind(this) }
+                <div className="chat-field__button">
+                    <Button clickHandler={this._handleSend.bind(this)}
                         isDisabled={ value === '' }
                         tabIndex='2'
-                        value='Sumbit'/>
+                        value='Send'/>
                 </div>
             </div>
         );

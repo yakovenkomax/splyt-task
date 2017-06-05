@@ -8,7 +8,7 @@
 .app__header {
     position: relative;
     display: flex;
-    padding: 0.75rem;
+    padding: 0.75rem 1rem;
     align-items: center;
     background-color: #fff;
     box-shadow: var(--shadow);

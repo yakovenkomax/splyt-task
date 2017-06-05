@@ -12,24 +12,11 @@
 }
 
 .login-gate__text {
-
-}
-
-.login-gate__input {
-    border: solid 1px var(--color-gray-light);
-    border-radius: var(--border-radius);
-    outline: none;
-    resize: none;
-    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
     color: var(--color-gray-dark);
 }
 
-.login-gate__input::placeholder {
-    color: var(--color-gray-light);
-    font-weight: 300;
-}
-
-.login-gate__input:hover,
-.login-gate__input:focus {
-    border-color: var(--color-teal);
+.login-gate__input {
+    margin-bottom: 1rem;
 }

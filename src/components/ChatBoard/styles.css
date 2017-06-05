@@ -2,21 +2,25 @@
     flex-grow: 1;
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: 1rem;
+    overflow: auto;
 }
 
 .chat-board__message {
-
+    display: flex;
 }
 
 .chat-board__time {
     color: #fff;
+    margin-right: 0.5rem;
 }
 
 .chat-board__username {
     color: #fff;
+    margin-right: 0.25rem;
 }
 
 .chat-board__text {
     color: #fff;
+    white-space: pre-line;
 }

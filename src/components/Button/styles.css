@@ -1,0 +1,31 @@
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border: 0;
+    border-radius: var(--border-radius);
+    outline: none;
+    background-color: var(--color-teal);
+    font-size: 1rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: #fff;
+    transition: background-color var(--animation-speed);
+}
+
+
+.button:hover,
+.button:focus {
+    background-color: var(--color-teal-dark);
+}
+
+.button:active {
+    background-color: var(--color-teal-light);
+}
+
+.button_disabled,
+.button_disabled:hover {
+    background-color: var(--color-gray-light);
+}
+

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import ChatBoard from '../ChatBoard';
 import UserList from '../UserList';
-import InputField from '../InputField';
+import ChatField from '../ChatField';
 import LoginGate from '../LoginGate';
 
 import logo from '../../splyt.svg';
@@ -87,7 +87,7 @@ export default class App extends Component {
                     </div>
                     <div className="app__chat">
                         <ChatBoard messageHistory={ messageHistory }/>
-                        <InputField onSend={this._sendMessage.bind(this)}/>
+                        <ChatField onSend={this._sendMessage.bind(this)}/>
                     </div>
                 </div>
                 { userName === null &&

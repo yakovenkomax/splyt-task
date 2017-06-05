@@ -6,13 +6,16 @@ export default class UserList extends Component {
         const { userList } = this.props;
 
         return (
-            <ul className="user-list">
-                { userList.map((userName, index) =>
-                    <li key={userName + index}>
-                        <span>{ userName }</span>
-                    </li>
-                ) }
-            </ul>
+            <div className="user-list">
+                <div className="user-list__heading">Users:</div>
+                <ul className="user-list__list">
+                    { userList.map((userName, index) =>
+                        <li className="user-list__item" key={userName + index}>
+                            <span className="user-list__username">{ userName }</span>
+                        </li>
+                    ) }
+                </ul>
+            </div>
         );
     }
 }

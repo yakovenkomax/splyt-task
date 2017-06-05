@@ -1,8 +1,31 @@
 .user-list {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
     height: 100%;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: var(--shadow-dark);
+}
+
+.user-list__list {
+    flex-grow: 1;
     margin: 0;
     padding: 0;
     list-style-type: none;
-    background-color: #fff;
-    box-shadow: var(--shadow-dark);
+    overflow: auto;
+}
+
+.user-list__heading {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    color: var(--color-gray-dark);
+}
+
+.user-list__item {
+
+}
+
+.user-list__username {
+    
 }

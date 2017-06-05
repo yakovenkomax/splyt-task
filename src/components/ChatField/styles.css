@@ -1,0 +1,11 @@
+.chat-field {
+    display: flex;
+    flex-shrink: 0;
+    padding: 1rem;
+    background-color: #fff;
+}
+
+.chat-field__input {
+    flex-grow: 1;
+    margin-right: 1rem;
+}
