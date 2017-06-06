@@ -14,11 +14,6 @@
     box-shadow: var(--shadow);
 }
 
-.app__body {
-    display: flex;
-    flex-grow: 1;
-}
-
 .app__logo-box {
     display: flex;
     align-items: flex-start;
@@ -44,13 +39,14 @@
     color: var(--color-purple);
 }
 
-.app__chat {
+.app__body {
     display: flex;
-    flex-direction: column;
     flex-grow: 1;
+    height: 100%;
 }
 
-.app__users {
-    flex-basis: 20%;
-    min-width: 200px;
+@media (max-width: 576px) {
+    .app__body {
+        flex-direction: column;
+    }
 }

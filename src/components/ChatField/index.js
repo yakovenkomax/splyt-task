@@ -49,7 +49,7 @@ export default class ChatField extends Component {
                         heyPressHandler={this._handleKeyPress.bind(this)}
                         tabIndex='1'
                         rows='1'
-                        placeholder='Type your message here...'
+                        placeholder='Type here...'
                         value={value}/>
                 </div>
                 <div className="chat-field__button">

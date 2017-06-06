@@ -85,13 +85,11 @@ export default class App extends Component {
                     <div className="app__username">{ userName !== null && userName }</div>
                 </header>
                 <div className="app__body">
-                    <div className="app__users">
-                        <UserList userList={ userList }/>
-                    </div>
-                    <div className="app__chat">
-                        <ChatBoard messageHistory={ messageHistory }/>
-                        <ChatField onSend={this._sendMessage.bind(this)}/>
-                    </div>
+                    <UserList userList={ userList }/>
+                    <ChatBoard messageHistory={ messageHistory }/>
+                </div>
+                <div className="app__footer">
+                    <ChatField onSend={this._sendMessage.bind(this)}/>
                 </div>
                 { userName === null &&
                     <LoginGate onSend={this._sendUserName.bind(this)} errorText={ errorText }/>
