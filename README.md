@@ -1,3 +1,5 @@
+![Splyt Chat](https://user-images.githubusercontent.com/5172360/26871298-675b0574-4b7b-11e7-9138-17a6896afd3a.png)
+
 # splyt-task
 
 Запуск приложения в dev режиме: `npm start`<br/>
